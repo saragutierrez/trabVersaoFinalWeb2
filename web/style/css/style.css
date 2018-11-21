@@ -1,0 +1,31 @@
+#botao{
+    margin-top: 4%; 
+}
+
+#login{
+    width: 50%;
+    margin-top: 5%;
+    padding: 7% 9% 7% 9%;
+    background: #a8abaf;
+    border-radius: 10px;
+}
+#atendimentos{
+    margin-top: 5%;
+}
+#tabela-atendimento{
+    width: 80%;
+    margin: auto;
+}
+#efetuar_atendimento{
+    width: 50%;
+    margin-top: 5%;
+}
+
+#efetuar_atendimento_combo{
+    margin-top: 5%; 
+}
+
+#formulario_usuario{
+    width: 50%;
+    margin-top: 5%;
+}

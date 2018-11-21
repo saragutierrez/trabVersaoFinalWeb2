@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reclamacoes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cf9ae3e9-3b44-4ae8-80f4-d2dc1f09113b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="situacao" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT a.dataHora,cli.nome,a.descricao,p.nome_produto,a.situacao,a.solucao
+from trabalho.atendimento as a
+inner join trabalho.produto as p ON a.id_produto = p.id_produto
+inner join trabalho.categoria as c ON p.id_categoria = c.id_categoria
+inner join trabalho.usuario as cli ON a.id_cliente = cli.id
+inner join trabalho.tipo_atendimento as ta ON a.id_tipoAt = ta.id_tipoAt
+where ta.nome_tipoAt = 'reclamacao' and a.situacao != $P{situacao};]]>
+	</queryString>
+	<field name="dataHora" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome_produto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="situacao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="solucao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="79" backcolor="#006666" uuid="880f2b2d-f038-4b0b-8467-0ddb103c2499"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="32"/>
+				</textElement>
+				<text><![CDATA[RECLAMAÇÕES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="92" height="20" uuid="606f1585-55b7-4b61-9d62-5b8b660c9b1e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="460" y="0" width="95" height="20" uuid="1d1803e8-0a37-45f8-a942-dd394376d4f1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="368" y="0" width="92" height="20" uuid="552f56b7-bdff-46b2-a2af-a35e0900b9f2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="276" y="0" width="92" height="20" uuid="17a40357-bca4-4700-8695-97f4f6f5ab2f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="184" y="0" width="92" height="20" uuid="84be194c-7ab8-4fce-82e1-a0d5db885fb3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="92" y="0" width="92" height="20" uuid="0b0447a8-aed7-4b8e-9670-257a930a4331"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="92" y="0" width="92" height="20" uuid="476f2f1c-9fda-43a4-b2aa-9a100eb66406"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="0" width="92" height="20" uuid="157a375e-e44d-4eec-9845-f35f15d47af8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DESCRIÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="92" height="20" uuid="63e6602e-9400-4e5e-bb30-125ead804027"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[PRODUTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="0" width="92" height="20" uuid="0a7d1921-8f22-4cd7-8538-f1444773201a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[SITUAÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="92" height="20" uuid="46229a7d-8410-4d95-b356-5fbfb57b5ea0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[SOLUÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="92" height="20" uuid="8de145dd-f577-4709-b45d-b84e89688c43"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DATA/HORA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="23" uuid="5786b970-570e-4e15-952c-c427a96d5b1c"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="92" height="20" uuid="cf1a7a64-79a5-4fb8-acc6-8d8356cf3da1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dataHora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="92" y="0" width="92" height="20" uuid="e5d6ff71-83b5-4c7f-bd50-a26508806206"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="0" width="92" height="20" uuid="7293cebe-c55c-46d1-a9ed-47cbbd2ca419"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="92" height="20" uuid="209882ca-40ee-4ad8-9970-6a1d5adb5ab5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nome_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="0" width="92" height="20" uuid="9e62b9c2-8831-45e5-b396-66f8dadde5b1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="0" width="92" height="20" uuid="2b78e695-5bc6-47b3-8c03-523b6e028d4e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{solucao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="54" backcolor="#006666" uuid="4aa2e746-755a-4909-b479-066d1f92116d"/>
+			</rectangle>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="10" y="20" width="100" height="20" uuid="d1fa2222-8a26-4fc4-98cf-4c0846c5a569"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="129" y="20" width="339" height="20" uuid="a4223afe-9066-454a-a94b-66e138fe143c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[BIEBE- Beauty Embuste Indústria de Beleza e Estética ]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
